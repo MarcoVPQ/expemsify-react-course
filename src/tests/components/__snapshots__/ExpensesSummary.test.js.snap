@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render Component with 1 expenses 1`] = `
+<div
+  className="page-header"
+>
+  <div
+    className="content-container"
+  >
+    <h2
+      className="page-header__title"
+    >
+      Viewing 
+      <span>
+        1
+      </span>
+       expense for a total of 
+      <span>
+        195
+      </span>
+    </h2>
+    <div
+      className="page-header__actions"
+    >
+      <Link
+        className="button"
+        replace={false}
+        to="/create"
+      >
+        Add Expense
+      </Link>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`should render Component with 2 expenses 1`] = `
+<div
+  className="page-header"
+>
+  <div
+    className="content-container"
+  >
+    <h2
+      className="page-header__title"
+    >
+      Viewing 
+      <span>
+        2
+      </span>
+       expenses for a total of 
+      <span>
+        1095195
+      </span>
+    </h2>
+    <div
+      className="page-header__actions"
+    >
+      <Link
+        className="button"
+        replace={false}
+        to="/create"
+      >
+        Add Expense
+      </Link>
+    </div>
+  </div>
+</div>
+`;
