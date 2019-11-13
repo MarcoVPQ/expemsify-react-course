@@ -7,7 +7,7 @@
     "test": "cross-env NODE_ENV=test jest --config=jest.config.json",
     "build:dev": "webpack",
     "build:prod": "webpack -p --env production",
-    "dev-server": "webpack-dev-server --hot --watch",
+    "dev": "webpack-dev-server --hot --watch",
     "start": "node server/server.js",
     "heroku-postbuilt": "npm run build:prod"
   },
@@ -26,15 +26,15 @@
     "dotenv": "^4.0.0",
     "express": "^4.15.4",
     "extract-text-webpack-plugin": "^3.0.0",
-    "firebase": "^4.2.0",
+    "firebase": "^7.3.0",
     "history": "^4.7.2",
     "moment": "^2.18.1",
-    "node-sass": "^4.5.3",
+    "node-sass": "^4.12.0",
     "normalize.css": "^7.0.0",
-    "react": "^16.0.0",
+    "react": "^16.11.0",
     "react-addons-shallow-compare": "^15.6.0",
     "react-dates": "^12.7.0",
-    "react-dom": "^16.0.0",
+    "react-dom": "^16.11.0",
     "react-modal": "^2.2.2",
     "react-redux": "^5.0.5",
     "react-router-dom": "^4.2.2",
@@ -54,8 +54,8 @@
     "react-test-renderer": "^16.0.0",
     "webpack-dev-server": "^2.5.1"
   },
-  "engines":{
-    "node":"^10.15.3",
-    "npm":"^6.9.0"
+  "engines": {
+    "node": "^10.15.3",
+    "npm": "^6.9.0"
   }
 }

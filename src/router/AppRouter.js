@@ -9,7 +9,7 @@ import EditExpensePage from '../components/EditExpense';
 import Notfound from '../components/NotFound';
 import LoginPage from './../components/LoginPage';
 import  PrivateRoute  from './PrivateRoute';
-import { PublicRoute } from './PublicRoute';
+import  PublicRoute  from './PublicRoute';
 
 
 export const history = createHistory();

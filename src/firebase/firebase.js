@@ -1,5 +1,6 @@
-import * as firebase from 'firebase'
-
+import firebase  from 'firebase'
+import 'firebase/firestore';
+import 'firebase/auth';
 
 const config = {
     apiKey: process.env.FIREBASE_API_KEY,
@@ -7,12 +8,15 @@ const config = {
     databaseURL: process.env.FIREBASE_DATABSE_URL,
     projectId: process.env.FIREBASE_PROJECT_ID,
     storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
-    messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID
+    messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
+    appId: process.env.FIREBASE_APP_ID
   };
+
+
 
   firebase.initializeApp(config)
 
-  const database = firebase.database();
+  const database = firebase.firestore();
   const googleProvider = new firebase.auth.GoogleAuthProvider()
 
-  export { firebase, googleProvider ,database as default }
+  export { firebase, googleProvider, database as default }

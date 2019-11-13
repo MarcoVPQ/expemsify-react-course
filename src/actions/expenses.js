@@ -19,10 +19,11 @@ export const startAddExpense = (expenseData = {}) => {
 
         const expense = { description, amount, createdAt, note }
 
-        return database.ref(`users/${uid}/expenses`).push(expense)
-        .then((ref) => {
+        return database.collection(`users/${uid}/expenses`)
+        .add(expense)
+        .then(docRef => {
             dispatch(addExpense({
-                id: ref.key,
+                id: docRef.id,
                 ...expense
             }))
         })
@@ -39,16 +40,18 @@ export const setExpenses = (expenses) => ({
 export const startSetExpenses =() =>{
     return (dispatch, getState) => {
         const uid = getState().auth.uid;
-        return database.ref(`users/${uid}/expenses`).once('value', (snapshot) => {
+        return database.collection(`users/${uid}/expenses`)
+        .get()
+        .then( querySnapshot => {
             const expenses = []
-
-            snapshot.forEach(childSnapshot => {
+            querySnapshot.forEach( doc => {
                 expenses.push({
-                    id : childSnapshot.key,
-                    ...childSnapshot.val()
+                    id: doc.id,
+                    ...doc.data()
                 })
-                dispatch(setExpenses(expenses))
             })
+
+            dispatch(setExpenses(expenses))
         })
     }
 };
@@ -64,8 +67,8 @@ export const removeExpense =( { id } = {} )=>({
 export const startRemoveExpense =({id}) => {
     return (dispatch, getState) => {
         const uid = getState().auth.uid;
-        return database.ref(`users/${uid}/expenses/${id}`)
-              .remove()
+        return database.doc(`users/${uid}/expenses/${id}`)
+              .delete()
               .then(() => {
                 dispatch(removeExpense({id}))
               })
@@ -84,7 +87,7 @@ export const editExpense = (id, updates = {}) =>({
 export const startEditExpense = (id, updates = {}) => {
     return (dispatch, getState) => {
         const uid = getState().auth.uid;
-        return database.ref(`users/${uid}/expenses/${id}`)
+        return database.doc(`users/${uid}/expenses/${id}`)
                         .update(updates)
                         .then(() => {
                             dispatch(editExpense(id, updates))
